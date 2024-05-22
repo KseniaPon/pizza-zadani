@@ -6,17 +6,18 @@ import './style.css';
 
 interface IToppingProps {
   topping: ITopping;
+  onAmountChange: (selected: boolean) => void;
 }
 
-const Topping : React.FC<IToppingProps> = ({ topping }) => {
-  const [checked, setChecked] = useState<boolean>(false);
-  const handleChange = (newChecked: boolean) => {
-    setChecked(newChecked)
-  }
+const Topping : React.FC<IToppingProps> = ({ topping, onAmountChange }) => {
+  //const [checked, setChecked] = useState<boolean>(false);
+  // const handleChange = (newChecked: boolean) => {
+  //   setChecked(newChecked)
+  // }
 
   return (
     <div className="topping">
-      <Check checked={checked} onChange={handleChange}/>
+      <Check checked={topping.selected} onChange={onAmountChange}/>
       <span className="topping__content">
         {topping.name}: {topping.price} €
       </span>
